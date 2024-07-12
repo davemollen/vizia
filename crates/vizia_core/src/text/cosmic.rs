@@ -516,9 +516,31 @@ impl TextContext {
                                     glyph.x + glyph.w
                                 }
                             }
-                            None => {
-                                // Start of empty line
-                                0.0
+                            None => match text_align {
+                                TextAlign::Start => {
+                                    if run.rtl {
+                                        bounds.width()
+                                    } else {
+                                        0.
+                                    }
+                                }
+                                TextAlign::End => {
+                                    if run.rtl {
+                                        0.
+                                    } else {
+                                        bounds.width()
+                                    }
+                                }
+                                TextAlign::Justify {
+                                    if run.rtl {
+                                        bounds.width()
+                                    } else {
+                                        0.
+                                    }
+                                }
+                                TextAlign::Center => bounds.width() * 0.5,
+                                TextAlign::Left => 0.,
+                                TextAlign::Right => bounds.width()
                             }
                         },
                     };

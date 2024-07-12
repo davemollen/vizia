@@ -43,6 +43,12 @@ fn main() -> Result<(), ApplicationError> {
                 .placeholder("Type something...")
                 .on_edit(|cx, text| cx.emit(AppEvent::SetEditableText(text)));
 
+            Textbox::new(cx, AppData::editable_text)
+                .width(Pixels(300.0))
+                .text_align(TextAlign::Right)
+                .placeholder("Type something...")
+                .on_edit(|cx, text| cx.emit(AppEvent::SetEditableText(text)));
+
             HStack::new(cx, |cx| {
                 Textbox::new(cx, AppData::editable_text)
                     .class("icon-before")
